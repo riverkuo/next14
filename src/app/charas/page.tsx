@@ -16,7 +16,7 @@ let currPage = `https://rickandmortyapi.com/api/character`;
 
 const Charas = async () => {
   const charasRes = await charasFetcher(currPage);
-  //NOTE :first load，因為和client端無互動，應為server components
+  //DONE :first load，因為和client端無互動，應為server components
   //想像成進畫面第一次的useEffect
   //server components中，包住client component[v]
   return (

@@ -13,7 +13,7 @@ const CharasList = ({ listInfo }: { listInfo: RickandmortyCharacterRes }) => {
     curr: 1,
   });
   const [charasList, setCharasList] = useState(listInfo.results);
-  //NOTE :點擊後打api的元件，因為和client端互動，應為client components
+  //DONE :點擊後打api的元件，因為和client端互動，應為client components
   const pageChange = useCallback(
     (status: string) => {
       setPageInfo((pre) => ({ ...pre, loading: true }));

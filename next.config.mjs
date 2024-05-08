@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  //NOTE 要加圖片的host
+  //DONE 要加圖片的host
   images: {
     remotePatterns: [
       {

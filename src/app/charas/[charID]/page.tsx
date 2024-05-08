@@ -1,4 +1,4 @@
-//NOTE : dynamic routes
+//DONE : dynamic routes
 //[folderName] as params
 import React from 'react';
 import { RickandmortyCharacter, RickandmortyCharacterRes } from '../../../../typings';
@@ -54,9 +54,9 @@ const CharPage = async ({ params: { charID } }: PageProps) => {
 
 export default CharPage;
 
-// NOTE: 搭配ISR 這邊為了預先產出靜態檔案而做的處理
+// DONE: 搭配ISR 這邊為了預先產出靜態檔案而做的處理
 export const generateStaticParams = async () => {
   const res = await fetch('https://rickandmortyapi.com/api/character');
   const listData: RickandmortyCharacterRes = await res.json();
-  return listData.results.map((character) => ({ charID: character.id.toString() })); //NOTE parameters要當作string傳出去
+  return listData.results.map((character) => ({ charID: character.id.toString() })); //DONE parameters要當作string傳出去
 };

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { RickandmortyCharacterRes } from '../../../../typings';
-import { notFound } from 'next/navigation'; //NOTE: This function allows you to render the not-found.js file within a route segment as well as inject a tag.
+import { notFound } from 'next/navigation'; //DONE: This function allows you to render the not-found.js file within a route segment as well as inject a tag.
 import Image from 'next/image';
 import Link from 'next/link';
 import Loading from './loading';
