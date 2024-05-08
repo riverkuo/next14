@@ -12,7 +12,7 @@ const Navbar = () => {
           <Link href={`/charas`}>角色</Link>
         </li>
         <li className="mx-4 bg-white rounded-lg p-2 shadow-sm">
-          <Link href={`/locations`}>地點</Link>
+          <Link href={`/searchCharas`}>搜尋角色</Link>
         </li>
       </ul>
     </nav>
