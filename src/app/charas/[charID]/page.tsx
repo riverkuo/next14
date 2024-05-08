@@ -29,7 +29,7 @@ const fetchCharacter = async (id: string) => {
 const CharPage = async ({ params: { charID } }: PageProps) => {
   const character = await fetchCharacter(charID);
 
-  if (!character) notFound(); //TODO: check 這個寫法好神奇，可讀性有點低，再查一下
+  if (!character) notFound(); //DONE: check 這個寫法好神奇，可讀性有點低，再查一下，（官網建議QQ）
 
   return (
     <div>
