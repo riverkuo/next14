@@ -12,6 +12,7 @@ const CharasList = ({ listInfo }: { listInfo: RickandmortyCharacterRes }) => {
     loading: false,
     curr: 1,
   });
+  //DONE :應該在client component中塞store資料 
   const [charasList, setCharasList] = useState(listInfo.results);
   //DONE :點擊後打api的元件，因為和client端互動，應為client components
   const pageChange = useCallback(
