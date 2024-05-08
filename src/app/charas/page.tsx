@@ -4,6 +4,7 @@ import React from 'react';
 import { RickandmortyCharacterRes } from '../../../typings';
 import Link from 'next/link';
 import Image from 'next/image';
+import CharasList from './CharacterList';
 
 const charasFetcher = async (url: string) => {
   const res = await fetch(url);
@@ -14,22 +15,14 @@ const charasFetcher = async (url: string) => {
 let currPage = `https://rickandmortyapi.com/api/character`;
 
 const Charas = async () => {
-  const { info, results } = await charasFetcher(currPage);
-
+  const charasRes = await charasFetcher(currPage);
+  //TODO :first load，因為和client端無互動，應為server components
+  //想像成進畫面第一次的useEffect
+  //server components中，包住client component[v]
   return (
     <div>
       charas page
-      {results?.map((char) => (
-        <div className="flex items-center w-full my-2 p-4 shadow-xl rounded-lg" key={char.id}>
-          <div className="">
-            <Image src={char.image} alt={char.name} width={100} height={100} />
-          </div>
-          <div>
-            <p>{char.name}</p>
-            <Link href={`/characters/${char.id}`}>{char.id}</Link>
-          </div>
-        </div>
-      ))}
+      <CharasList listInfo={charasRes} />
     </div>
   );
 };
