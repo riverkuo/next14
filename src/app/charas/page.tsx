@@ -5,6 +5,7 @@ import { RickandmortyCharacterRes } from '../../../typings';
 import Link from 'next/link';
 import Image from 'next/image';
 import CharasList from './CharacterList';
+import Server from './Server'; //river:note import server-component in parent server-component
 
 const charasFetcher = async (url: string) => {
   const res = await fetch(url);
@@ -22,7 +23,9 @@ const Charas = async () => {
   return (
     <div>
       charas page
-      <CharasList listInfo={charasRes} />
+      <CharasList listInfo={charasRes}>
+        <Server />
+      </CharasList>
     </div>
   );
 };
