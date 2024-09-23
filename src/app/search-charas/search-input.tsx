@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FormEvent, useRef } from 'react';
 
-const Search = () => {
+export const Search = () => {
   const searchTerm = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -28,5 +28,3 @@ const Search = () => {
     </form>
   );
 };
-
-export default Search;

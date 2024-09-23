@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './Search';
+import { Search } from './search-input';
 
 const SearchCharasLayout = ({ children }: { children: React.ReactNode }) => {
   return (

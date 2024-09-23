@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <nav className="flex justify-between items-center p-2 min-h-60 bg-blue-400">
       <div>
@@ -19,4 +19,3 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
