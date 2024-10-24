@@ -1,25 +1,25 @@
 import { Dispatch, RefObject, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
-import { GroupOption, MultipleSelectorProps, OptionItem } from './types';
+import { GroupDropDown, MultipleSelectorProps, DropDownItem } from './types';
 import { useDebounce } from './useDebounce';
 import { removePickedOption, transToGroupOption } from './utils';
 
 interface useMultiSelectorProps {
   dropdownRef: RefObject<HTMLDivElement>;
   inputRef: RefObject<HTMLInputElement>;
-  arrayDefaultOptions: MultipleSelectorProps['defaultOptions'];
+  arrayDefaultOptions: MultipleSelectorProps['staticOptions'];
   groupBy: MultipleSelectorProps['groupBy'];
 
   setOpen: Dispatch<SetStateAction<boolean>>;
   open: boolean;
 
-  setSelected: Dispatch<SetStateAction<OptionItem[]>>;
-  selected: OptionItem[];
+  setSelected: Dispatch<SetStateAction<DropDownItem[]>>;
+  selected: DropDownItem[];
 
   onChange: MultipleSelectorProps['onChange'];
 
-  value: MultipleSelectorProps['value'];
+  defaultSelectedValue: MultipleSelectorProps['defaultSelectedValue'];
 
-  arrayOptions: OptionItem[] | undefined;
+  arrayOptions: DropDownItem[] | undefined;
   onSearch: MultipleSelectorProps['onSearch'];
   onSearchSync: MultipleSelectorProps['onSearchSync'];
   inputValue: string;
@@ -39,7 +39,7 @@ export function useMultiSelector({
   setSelected,
   selected,
   onChange,
-  value,
+  defaultSelectedValue: value,
   arrayOptions,
   onSearch,
   onSearchSync,
@@ -49,13 +49,13 @@ export function useMultiSelector({
   creatable,
   commandProps,
 }: useMultiSelectorProps) {
-  const [options, setOptions] = useState<GroupOption>(transToGroupOption(arrayDefaultOptions, groupBy));
+  const [options, setOptions] = useState<GroupDropDown>(transToGroupOption(arrayDefaultOptions, groupBy));
   const [isLoading, setIsLoading] = useState(false);
   const debouncedSearchTerm = useDebounce(inputValue, delay || 500);
-  const selectables = useMemo<GroupOption>(() => removePickedOption(options, selected), [options, selected]);
+  const selectables = useMemo<GroupDropDown>(() => removePickedOption(options, selected), [options, selected]);
 
   const handleUnselect = useCallback(
-    (option: OptionItem) => {
+    (option: DropDownItem) => {
       const newOptions = selected.filter((s) => s.value !== option.value);
       setSelected(newOptions);
       onChange?.(newOptions);

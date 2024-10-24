@@ -6,15 +6,18 @@ import { ComponentProps, forwardRef, Ref, useCallback, useImperativeHandle, useR
 import { Badge } from '@/components/ui/badge';
 import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
 import { cn } from '../utils';
-import { MultipleSelectorProps, MultipleSelectorRef, OptionItem } from './types';
+import { MultipleSelectorProps, MultipleSelectorRef, DropDownItem } from './types';
 import { useMultiSelector } from './useMultiSelector';
 import { isOptionsExist } from './utils';
 
 /** TODO
- * rename Type
+ * rename Type [v]
  * different badge color
  * 整理(style, component, types)
- * 要不要拆custom hook?
+ * 要不要拆custom hook / context包起來
+ * 拔掉useEffect
+ * 試其他的props
+ * too many props
  */
 
 /**
@@ -46,10 +49,10 @@ CommandEmpty.displayName = 'CommandEmpty';
 const MultipleSelector = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
   (
     {
-      value,
+      defaultSelectedValue,
       onChange,
       placeholder,
-      defaultOptions: arrayDefaultOptions = [],
+      staticOptions: arrayDefaultOptions = [],
       options: arrayOptions,
       delay,
       onSearch,
@@ -77,7 +80,7 @@ const MultipleSelector = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
 
     const [open, setOpen] = useState(false);
     const [onScrollbar, setOnScrollbar] = useState(false);
-    const [selected, setSelected] = useState<OptionItem[]>(value || []);
+    const [selected, setSelected] = useState<DropDownItem[]>(defaultSelectedValue || []);
     const [inputValue, setInputValue] = useState('');
 
     const { options, debouncedSearchTerm, isLoading, handleKeyDown, commandFilter, handleUnselect, selectables } =
@@ -91,7 +94,7 @@ const MultipleSelector = forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
         setSelected,
         selected,
         onChange,
-        value,
+        defaultSelectedValue,
         arrayOptions,
         onSearch,
         onSearchSync,
