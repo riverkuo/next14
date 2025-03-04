@@ -1,6 +1,7 @@
+import { QueryClientProvider } from '@/libs/store/query-client/provider';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex justify-center items-center h-screen">{children}</body>
+      <body className="flex justify-center items-center h-screen">
+        <main>
+          <QueryClientProvider>{children}</QueryClientProvider>
+        </main>
+      </body>
     </html>
   );
 }
