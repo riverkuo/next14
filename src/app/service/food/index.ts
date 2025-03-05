@@ -17,6 +17,21 @@ import {
   PatchFoodItemRequest,
 } from './types';
 
+/** Original Method */
+// export const getFood: QueryFunction<GetFoodItemResponse | null, [QueryKey.FOOD, GetFoodItemRequest]> = async ({
+//   queryKey,
+// }) => {
+//   const [, params] = queryKey;
+//   const endpoint = `/food`;
+//   const response = await fetcher(endpoint, {
+//     mode: 'get',
+//     params: generateParams(params),
+//   });
+
+//   return response.data;
+// };
+
+/** New Method: add isLocal flag and mock-data */
 export const getFood: QueryFunction<GetFoodItemResponse | null, [QueryKey.FOOD, GetFoodItemRequest]> = async ({
   queryKey,
 }) => {

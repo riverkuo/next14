@@ -8,7 +8,6 @@ import {
   QueryClientProvider as ReactQueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactNode } from 'react';
-// TODO: remove unused
 interface ErrorHandlerParamTypes {
   error: Error;
   query?: Query<unknown, unknown, unknown>;
@@ -44,20 +43,6 @@ export const QueryClientProvider = ({ children }: { children: ReactNode }) => {
     await errorHandler({ error, query });
   }
 
-  function processFailedQueue() {
-    failedQueue.forEach(({ query, mutation, variables }) => {
-      if (query) void query.fetch();
-      if (mutation) void mutation.execute(variables);
-    });
-    isRefreshing = false;
-    failedQueue = [];
-  }
-
-  function refreshTokenFailHandler() {
-    failedQueue = [];
-    isRefreshing = false;
-  }
-
   async function mutationErrorHandler(
     error: Error,
     variables: unknown,
@@ -69,39 +54,5 @@ export const QueryClientProvider = ({ children }: { children: ReactNode }) => {
 
   async function errorHandler({ error, query, mutation, variables }: ErrorHandlerParamTypes) {}
 
-  async function handleInvalidAccessToken({
-    query,
-    mutation,
-    variables,
-  }: {
-    query: ErrorHandlerParamTypes['query'];
-    mutation: ErrorHandlerParamTypes['mutation'];
-    variables: ErrorHandlerParamTypes['variables'];
-  }) {
-    if (!isRefreshing) {
-      isRefreshing = true;
-      failedQueue.push({ query, mutation, variables });
-
-      //   if (refreshToken) {
-      //     try {
-      //       deleteToken(accessTokenKey);
-      //       deleteToken(refreshTokenKey);
-
-      //       const refreshResult = await GetNewAccessToken(refreshToken);
-      //       if (refreshResult.code === ErrorCode.SUCCESS) {
-      //         const { access_token, refresh_token } = refreshResult.data;
-      //         updateTokens({ access_token, refresh_token });
-      //         processFailedQueue();
-      //       } else {
-      //         refreshTokenFailHandler();
-      //       }
-      //     } catch (error) {
-      //       refreshTokenFailHandler();
-      //     }
-      //   }
-    } else {
-      failedQueue.push({ query, mutation, variables });
-    }
-  }
   return <ReactQueryClientProvider client={queryClient}>{children}</ReactQueryClientProvider>;
 };
