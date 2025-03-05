@@ -19,7 +19,7 @@ npm run dev
 - axios
 
 ### Guide
-1. Add `.env` file
+1. Add `.env` file, content should be same as testing environment, usually `sit`.
 2. In `utils/mock-data-utils.ts`, add `isLocal` `delay` `getMockRes`.
     ```Typescript
     import { BaseResponse } from '@/libs/fetcher/fetcher';
