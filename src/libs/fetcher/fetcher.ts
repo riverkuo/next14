@@ -71,12 +71,12 @@ export async function fetcher(
       status: BaseResponseStatus.SUCCESS,
     };
 
-    console.log('[endpoint]: ', url);
-    console.log('[  body  ]: ', body);
-    console.log('[ params ]: ', params);
+    console.log(`\x1b[36m[endpoint]:\x1b[36m`, url);
+    console.log(`\x1b[33m[  body  ]:\x1b[33m`, body);
+    console.log(`\x1b[33m[ params ]:\x1b[33m`, params);
 
     if (result.status >= 200 && result.status < 300) {
-      console.log(`[ result ]: `, result.data);
+      console.log(`\x1b[91m[ result ]:\x1b[91m`, result.data);
       return baseResponseData;
     }
 

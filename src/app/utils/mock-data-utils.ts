@@ -20,8 +20,8 @@ export const delay = (time = 1) => {
 export const getMockRes = async <T>(url: string, mockData: BaseResponse<T>, time = 1): Promise<BaseResponse<T>> => {
   await delay(time);
   return new Promise((res) => {
-    // TODO 統一 log 格式
-    console.log(`\x1b[33m${url} \x1b[37m - Mock Response = \n`, mockData.data);
+    console.log(`\x1b[1;36m[mock endpoint]:\x1b[1;36m`, url);
+    console.log(`\x1b[1;91m[mock response]:\x1b[1;91m`, mockData.data);
     res(mockData);
   });
 };
