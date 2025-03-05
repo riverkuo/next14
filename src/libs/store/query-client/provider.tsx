@@ -15,14 +15,6 @@ interface ErrorHandlerParamTypes {
   variables?: unknown;
 }
 
-let isRefreshing = false;
-
-let failedQueue: {
-  query?: Query<unknown, unknown, unknown>;
-  mutation?: Mutation<unknown, unknown, unknown>;
-  variables?: unknown;
-}[] = [];
-
 export const QueryClientProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient({
     defaultOptions: {
