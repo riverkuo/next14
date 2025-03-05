@@ -1,5 +1,5 @@
-import { getMockRes, isLocal } from '@/app/utils/mock-data-utils';
-import { generateParams } from '@/app/utils/service';
+import { getMockRes, isLocal } from '@/utils/mock-data-utils';
+import { generateParams } from '@/utils/service';
 import { BaseResponse, fetcher } from '@/libs/fetcher/fetcher';
 import { MutateFunction, QueryFunction } from '@tanstack/react-query';
 import { QueryKey } from './key';
