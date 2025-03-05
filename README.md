@@ -11,6 +11,23 @@ npm run dev
 </br>
 </br>
 
+## DOING
+- [ ] Replace axios with fetch
+- [ ] Row Level Security
+- [ ] accessToken / refreshToken
+- [ ] query(search / pagination)
+- [ ] dataType: object array(json / jsonB)
+- [ ] functions
+- [ ] file
+- [ ] notification
+- [ ] login / logout (third party)
+
+
+
+</br>
+</br>
+
+
 ## Mock Data Guide
 
 
