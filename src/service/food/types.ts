@@ -1,4 +1,4 @@
-import { SupabaseQueryRequest } from '@/app/utils/service';
+import { SupabaseQueryRequest } from '@/utils/service';
 
 export type FoodItem = {
   id: string;

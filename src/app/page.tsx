@@ -2,9 +2,9 @@
 import { useIsFetching, useIsMutating, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { CSSProperties, useRef, useState } from 'react';
 import './page.module.css';
-import { addFood, deleteFood, editFood, getFood } from './service/food';
-import { MutationKey, QueryKey } from './service/food/key';
-import { FoodItem, GetFoodItemRequest, GetFoodItemResponse } from './service/food/types';
+import { addFood, deleteFood, editFood, getFood } from '../service/food';
+import { MutationKey, QueryKey } from '../service/food/key';
+import { FoodItem, GetFoodItemRequest, GetFoodItemResponse } from '../service/food/types';
 
 const containerStyle: CSSProperties = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' };
 
