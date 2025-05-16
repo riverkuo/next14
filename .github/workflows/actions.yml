@@ -27,7 +27,6 @@ jobs:
         run: |
           mkdir -p deploy
           cp -r .next/standalone/.next deploy/
-          cp -r .next/standalone/src deploy/
           cp -r .next/standalone/package.json deploy/
           cp -r .next/static deploy/.next/
           cp .next/standalone/server.js deploy/
