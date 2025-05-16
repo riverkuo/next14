@@ -38,6 +38,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "deploy/*"
           target: "/var/www/server/test-next-app"
+          strip_components: 1
           
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.2.2
@@ -47,5 +48,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /var/www/server/test-next-app
-            pm2 delete test-next-app || true
+            if pm2 list | grep -q "test-next-app"; then
+              pm2 delete test-next-app
+            fi
             PORT=3000 pm2 start server.js --name test-next-app
