@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.NGINX_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: ".next/standalone/*,.next/static"
-          target: "/var/www/test-next-app"
+          target: "/var/www/server/test-next-app"
           
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.2.2
