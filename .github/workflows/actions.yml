@@ -46,4 +46,6 @@ jobs:
           username: ${{ secrets.NGINX_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            pm2 restart test-next-app || pm2 start ecosystem.config.js
+            cd /var/www/server/test-next-app
+            pm2 delete test-next-app || true
+            PORT=3000 pm2 start server.js --name test-next-app
