@@ -25,9 +25,9 @@ jobs:
 
       - name: Create deployment package
         run: |
-          mkdir -p deploy
+          mkdir -p deploy/.next
           cp -r .next/standalone/* deploy/
-          cp -r .next/static deploy/.next/static
+          cp -r .next/static deploy/.next/
           cp -r public deploy/
 
       - name: Copy files to GCE VM
