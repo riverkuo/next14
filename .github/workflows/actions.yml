@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
@@ -23,13 +23,20 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Create deployment package
+        run: |
+          mkdir -p deploy
+          cp -r .next/standalone/* deploy/
+          cp -r .next/static deploy/.next/static
+          cp -r public deploy/
+
       - name: Copy files to GCE VM
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.NGINX_HOST }}
           username: ${{ secrets.NGINX_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ".next/standalone/*,.next/static"
+          source: "deploy/*"
           target: "/var/www/server/test-next-app"
           
       - name: Restart PM2
