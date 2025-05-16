@@ -40,6 +40,15 @@ jobs:
           source: "deploy/*"
           target: "/var/www/server/test-next-app"
           strip_components: 1
+
+      - name: Set permissions
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.NGINX_HOST }}
+          username: ${{ secrets.NGINX_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            sudo chown -R www-data:www-data /var/www/server/test-next-app/.next/static/*
           
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.2.2
