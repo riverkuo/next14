@@ -52,4 +52,4 @@ jobs:
             if pm2 list | grep -q "test-next-app"; then
               pm2 delete test-next-app
             fi
-            PORT=3000 pm2 start server.js --name test-next-app
+            NODE_ENV=production PORT=3000 pm2 start server.js --name test-next-app
