@@ -24,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Copy files to GCE VM
-        uses: appleboy/scp-action@1
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.NGINX_HOST }}
           username: ${{ secrets.NGINX_USER }}
@@ -33,7 +33,7 @@ jobs:
           target: "/var/www/test-next-app"
           
       - name: Restart PM2
-        uses: appleboy/ssh-action@1
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.NGINX_HOST }}
           username: ${{ secrets.NGINX_USER }}
