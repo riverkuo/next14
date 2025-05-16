@@ -48,7 +48,7 @@ jobs:
           username: ${{ secrets.NGINX_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            sudo chown -R www-data:www-data /var/www/server/test-next-app/.next/static/*
+            sudo chown -R www-data:www-data /var/www/server/test-next-app/.next/*
           
       - name: Restart PM2
         uses: appleboy/ssh-action@v1.2.2
