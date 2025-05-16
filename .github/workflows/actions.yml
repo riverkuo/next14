@@ -25,9 +25,12 @@ jobs:
 
       - name: Create deployment package
         run: |
-          mkdir -p deploy/.next
+          mkdir -p deploy
+          cp -r .next/standalone/.next deploy/
+          cp -r .next/standalone/src deploy/
+          cp -r .next/standalone/package.json deploy/
           cp -r .next/static deploy/.next/
-          cp -r .next/standalone/* deploy/
+          cp .next/standalone/server.js deploy/
 
       - name: Copy files to GCE VM
         uses: appleboy/scp-action@v1
