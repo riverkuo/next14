@@ -55,3 +55,9 @@ jobs:
               pm2 delete test-next-app
             fi
             NODE_ENV=production PORT=3000 pm2 start server.js --name test-next-app
+            
+      - name: Notify Discord
+        uses: riverkuo/notify-discord-action@v1.0.3
+        if: always()
+        with:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
